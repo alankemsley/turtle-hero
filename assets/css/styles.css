@@ -1,0 +1,150 @@
+/*GENERAL*/
+
+html {
+  font-family: 'Montserrat';
+}
+
+
+/*NAVBAR*/
+
+#logo {
+  height: 50px;
+  padding: 10px 20px;
+}
+
+#nav-top li a {
+  font-weight: 600;
+  color: #fdd835;
+}
+
+#nav-mobile li {
+  font-weight: 600;
+}
+
+#navbar ul .small-link {
+  color: #757575;
+}
+
+#mobile-nav {
+  padding-top: 30px;
+}
+
+#mobile-nav li .selected {
+  background-color: #f5f5f5;
+}
+
+#counter {
+  font-weight: 600;
+}
+
+
+/*MAIN*/
+
+main {
+  padding-top: 20px;
+}
+
+.no-card {
+  margin-top: 150px;
+}
+
+#map {
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  margin-bottom: 20px;
+  height: 200px;
+  width: 100%;
+}
+
+.card-button {
+  font-weight: 600;
+}
+
+.card-button:hover {
+  opacity: 0.8;
+}
+
+#steps-header {
+  margin-top: 60px;
+}
+
+#steps div {
+  margin-top: 0;
+  margin-bottom: 40px;
+  padding: 0 80px;
+}
+
+#helpSteps-header {
+  margin-top: 60px;
+}
+
+#helpSteps div {
+  margin-top: 0;
+  margin-bottom: 40px;
+  padding: 0 80px;
+}
+
+#userLocation {
+  height: 50px;
+  width: 50px;
+}
+
+iframe {
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  margin-bottom: 20px;
+  height: 200px;
+  width: 100%;
+}
+
+
+/*MODALS*/
+
+#modals {
+  color: #4e342e;
+}
+
+#submit {
+  font-weight: 800;
+}
+
+#call {
+  font-weight: 800;
+}
+
+#send {
+  font-weight: 800;
+}
+
+
+/*STICKY FOOTER*/
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+
+/*RESPONSIVE DESIGN*/
+
+@media screen and (min-width: 601px) {
+  #steps div {
+    padding: 20px;
+  }
+  #helpSteps div {
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  #counter {
+    display: none;
+  }
+}
