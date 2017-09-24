@@ -2,9 +2,7 @@
 //BACK END
 //////////////////////////////////////////////////////////
 
-//Google Maps API apikey: AIzaSyA4PbxtjFAOdO90WsLjM_SXs_sfUEb7OM0
-
-//Initializes Firebase
+//Connect to Google Firebase
 var config = {
   apiKey: "AIzaSyC-0gBpvyFuIYL8gPMjvYx4WsczuEPzhwA",
   authDomain: "turtle-hero.firebaseapp.com",
@@ -13,23 +11,26 @@ var config = {
   storageBucket: "",
   messagingSenderId: "519761034904"
 };
+
+//Initialize the default Firebase app
 firebase.initializeApp(config);
+
+// Initialize the Firebase database
 var database = firebase.database();
 
-//Authenticates Firebase Anonymously
+//Initialize Firebase authentication
 firebase.auth().signInAnonymously().catch(function(error) {
-  //Handling errors
+  //Handle errors
   var errorCode = error.code;
   var errorMessage = error.message;
-
   if (errorCode === 'auth/operation-not-allowed') {
-    alert('You must enable Anonymous auth in Firebase Console');
+    alert('You must enable anonymous authentication in the Firebase Console.');
   } else {
     console.error(error);
   }
 });
 
-//Creates User Account
+//Create anonymous user account
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     var isAnonymous = user.isAnonymous;
@@ -37,6 +38,7 @@ firebase.auth().onAuthStateChanged(function(user) {
   }
 });
 
+//Start app
 function startUp() {
   if (window.mapsLoaded = false) {
     detectBrowser();
@@ -49,7 +51,7 @@ function notInitMap() {
   }
 };
 
-//Geolocation
+//Geolocation (Google Maps API key: AIzaSyA4PbxtjFAOdO90WsLjM_SXs_sfUEb7OM0)
 var map, infoWindow;
 var marker;
 
@@ -63,7 +65,7 @@ function initMap(id) {
 
   });
 
-  //Uses HTML5 geolocation
+  //Use HTML5 geolocation
   if (navigator && navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos = {
@@ -113,11 +115,12 @@ function initMap(id) {
         handleLocationError(true, infoWindow, map.getCenter());
       })
   } else {
-    //Browser doesn't suppport Geolocation
+    //If browser doesn't suppport geolocation
     handleLocationError(false, infoWindow, map.getCenter());
   }
 }
 
+// Geolocation errors
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
   infoWindow.setContent(browserHasGeolocation ?
@@ -126,6 +129,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.open(map);
 }
 
+// Detect user browser
 function detectBrowser() {
   var useragent = navigator.userAgent;
   var mapdiv = document.getElementById('map');
@@ -139,7 +143,7 @@ function detectBrowser() {
   }
 };
 
-//Creates turtle object
+//Create turtle object
 var turtles = {};
 
 firebase.database().ref().on("child_added", function(snapshot) {
@@ -160,12 +164,12 @@ firebase.database().ref().on("child_added", function(snapshot) {
   $("#tab1").prepend(block);
 });
 
-//Sets turtle value to database
+//Set turtle value to database
 firebase.database().ref().on("value", function(snapshot) {
   turtles = snapshot.val();
 })
 
-//Sends location
+//Send location
 $("#send").on("click", function(event) {
   event.preventDefault();
   // turtleDiv(false);
@@ -173,7 +177,7 @@ $("#send").on("click", function(event) {
   Materialize.toast("Your location has been sent.", 2000);
 });
 
-//Submits form and sends location
+//Submit form and send location
 $("#submit").on("click", function(event) {
   event.preventDefault();
   validate();
@@ -184,7 +188,7 @@ $("#submit").on("click", function(event) {
   Materialize.toast("Your report has been sent.", 2000);
 });
 
-//Validates form
+//Validate form
 function validate() {
   if ($("#name-input").val() == "") {
     Materialize.toast("Please provide your name.", 2000);
@@ -220,7 +224,7 @@ function validateEmail() {
   return (true);
 };
 
-//Resets form
+//Reset form
 function resetForm() {
   $("#comment-input").val("");
   $("#name-input").val("");
@@ -228,7 +232,7 @@ function resetForm() {
   $("#email-input").val("");
 }
 
-//Creates turtle card in document
+//Create turtle card in document
 function turtleDiv(noComm) {
   var comment = $("#comment-input").val();
   $("#fullCard").clone().prependTo("#tab1");
@@ -247,14 +251,14 @@ function turtleDiv(noComm) {
   }
 }
 
-//Moves turtle card from Reported to In Progress
+//Move turtle card from Reported to In Progress
 $("#tab1").on("click", "#next-stage-btn", function() {
   $("#tab2-heading").attr('class', 'no-card hide');
   $("#fullCard").prependTo("#tab2");
   Materialize.toast("This rescue has been marked IN PROGRESS.", 2000);
 });
 
-//Moves turtle card from In Progress to Saved
+//Move turtle card from In Progress to Saved
 var count = 0;
 $("#tab2").on("click", "#next-stage-btn", function() {
   count++;
@@ -281,7 +285,7 @@ $("#submit").on("click", function(e) {
 });
 
 //////////////////////////////////////////////////////////
-//DOCUMENT.READY
+//UPON LOADING WEBSITE
 //////////////////////////////////////////////////////////
 
 $(document).ready(function() {
@@ -326,9 +330,5 @@ $(document).ready(function() {
     e.preventDefault();
     $(this).get(0).reset();
   });
-
-
-
-
 
 });
