@@ -6,12 +6,12 @@
 
 //Initializes Firebase
 var config = {
-  apiKey: "AIzaSyBZAuUkeBYHmxfplYwuf-7wNHwKUFSLZcU",
-  authDomain: "turtle-project.firebaseapp.com",
-  databaseURL: "https://turtle-project.firebaseio.com",
-  projectId: "turtle-project",
+  apiKey: "AIzaSyC-0gBpvyFuIYL8gPMjvYx4WsczuEPzhwA",
+  authDomain: "turtle-hero.firebaseapp.com",
+  databaseURL: "https://turtle-hero.firebaseio.com",
+  projectId: "turtle-hero",
   storageBucket: "",
-  messagingSenderId: "919793437616"
+  messagingSenderId: "519761034904"
 };
 firebase.initializeApp(config);
 var database = firebase.database();
