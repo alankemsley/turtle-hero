@@ -167,7 +167,7 @@ firebase.database().ref().on("child_added", function(snapshot) {
 //Set turtle value to database
 firebase.database().ref().on("value", function(snapshot) {
   turtles = snapshot.val();
-})
+});
 
 //Send location
 $("#send").on("click", function(event) {
@@ -272,10 +272,10 @@ $("#tab2").on("click", "#next-stage-btn", function() {
 //Formspree ajax
 $("#submit").on("click", function(e) {
   e.preventDefault();
-  var name = $("#name-input")
-  var email = $("#email-input")
-  var phone = $("#phoneNumber-input")
-  var landmarks = $("#comment-input")
+  var name = $("#name-input");
+  var email = $("#email-input");
+  var phone = $("#phoneNumber-input");
+  var landmarks = $("#comment-input");
   $.ajax({
     method: "POST",
     url: "//formspree.io/umassturtlepower@gmail.com",
@@ -317,10 +317,10 @@ $(document).ready(function() {
 
   //Formspree ajax
   $('#reportNewTurtle-form').submit(function(e) {
-    var name = $('#name-input')
-    var email = $('#email-input')
-    var phone = $('#phoneNumber-input')
-    var landmarks = $('#comment-input')
+    var name = $('#name-input');
+    var email = $('#email-input');
+    var phone = $('#phoneNumber-input');
+    var landmarks = $('#comment-input');
     $.ajax({
       method: 'POST',
       url: '//formspree.io/umassturtlepower@gmail.com',
