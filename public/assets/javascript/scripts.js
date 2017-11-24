@@ -172,7 +172,6 @@ $("#send").on("click", function(event) {
   event.preventDefault();
   validate();
   $('#modal').modal('close');
-  // turtleDiv(true);
   initMap();
   Materialize.toast("Your report has been sent.", 2000);
 });
@@ -202,7 +201,7 @@ function resetForm() {
 }
 
 //Create turtle card in document
-function turtleDiv(noComm) {
+function turtleDiv() {
   var comment = $("#comment-input").val();
   $("#fullCard").clone().prependTo("#tab1");
   $("#tab1-heading").attr('class', 'no-card hide');
@@ -213,11 +212,7 @@ function turtleDiv(noComm) {
   $("#comment").empty();
   $("#comment").append(comment);
   $("#turtle").append("<div id='turtle' class='card hoverable hide");
-  if (noComm) {
-    $("#number").append("Turtle " + 1 + "<i class='material-icons right'>more_vert</i>");
-  } else {
-    $("#number").append("Turtle " + 1);
-  }
+  $("#number").append("Turtle " + 1 + "<i class='material-icons right'>more_vert</i>");
 }
 
 //Move turtle card from Reports to Rescuing
