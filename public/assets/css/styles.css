@@ -98,9 +98,9 @@ iframe {
   margin-bottom: 20px;
   height: 200px;
   width: 100%;
-  border-style: solid;
-  border-color: white;
-  border-width: 10px;
+  border-style: solid !important;
+  border-color: white !important;
+  border-width: 10px !important;
 }
 
 
