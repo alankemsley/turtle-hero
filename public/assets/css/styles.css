@@ -98,21 +98,16 @@ iframe {
   margin-bottom: 20px;
   height: 200px;
   width: 100%;
+  border-style: solid;
+  border-color: white;
+  border-width: 5px;
 }
 
 
-/*MODALS*/
+/*MODAL*/
 
 #modals {
   color: #4e342e;
-}
-
-#submit {
-  font-weight: 800;
-}
-
-#call {
-  font-weight: 800;
 }
 
 #send {
