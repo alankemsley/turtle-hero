@@ -103,6 +103,11 @@ iframe {
   border-width: 10px !important;
 }
 
+.text-wrapper {
+  margin-left: 20px !important;
+  margin-right: 20px !important;
+}
+
 
 /*MODAL*/
 
