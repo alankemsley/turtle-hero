@@ -17,83 +17,86 @@
 
 	<!-- NAVBAR -->
 	<nav id="navbar" class="nav-extended green">
-		<div class="nav-wrapper">
-			<a href="index.html" class="brand-logo"><img id="logo" src="assets/images/turtlehero-logo.png" alt="turtlehero Logo"></a>
-			<a href="#" data-activates="mobile-nav" class="button-collapse"><i class="material-icons">menu</i></a>
-			<ul id="nav-top" class="right hide-on-med-and-down">
-				<li><a href="index.html">REPORT TURTLE</a></li>
-				<li><a href="patrol-instructions.html">PATROL INSTRUCTIONS</a></li>
-				<li><a href="help.html">HELP</a></li>
-				<li><a href="http://www.turtlerescueleague.com/about" target="blank">ABOUT</a></li>
-			</ul>
-			<ul class="side-nav" id="mobile-nav">
-				<li><a class="waves-effect selected" href="index.html"><i class="material-icons">announcement</i>Report Turtle</a></li>
-				<li><a href="patrol-instructions.html" class="waves-effect"><i class="material-icons">info</i>Patrol Instructions</a></li>
-				<div class="divider">
-				</div>
-				<li><a class="small-link waves-effect" href="help.html"><i class="material-icons">help</i>Help</a></li>
-				<li><a href="http://www.turtlerescueleague.com/about" target="blank" class="small-link waves-effect"><i class="material-icons">launch</i>About</a></li>
-				<div class="divider">
-				</div>
-			</ul>
-		</div>
-		<div class="nav-content">
-			<ul id="tabs" class="tabs tabs-transparent">
-				<li class="tab"><a class="active" href="#tab1">Reports</a></li>
-				<li class="tab"><a href="#tab2">Rescuing</a></li>
-				<li class="tab"><a href="#tab3">Rescued <span id="counter" class="new badge yellow darken-1 green-text" data-badge-caption="">0</span></a></li>
-			</ul>
+		<div class="container">
+			<div class="nav-wrapper">
+				<a href="index.html" class="brand-logo"><img id="logo" src="assets/images/turtlehero-logo.png" alt="turtlehero Logo"></a>
+				<a href="#" data-activates="mobile-nav" class="button-collapse"><i class="material-icons">menu</i></a>
+				<ul id="nav-top" class="right hide-on-med-and-down">
+					<li><a href="index.html">REPORT TURTLE</a></li>
+					<li><a href="patrol-instructions.html">PATROL INSTRUCTIONS</a></li>
+					<li><a href="help.html">HELP</a></li>
+					<li><a href="http://www.turtlerescueleague.com/about" target="blank">ABOUT</a></li>
+				</ul>
+				<ul class="side-nav" id="mobile-nav">
+					<li><a class="waves-effect selected" href="index.html"><i class="material-icons">announcement</i>Report Turtle</a></li>
+					<li><a href="patrol-instructions.html" class="waves-effect"><i class="material-icons">info</i>Patrol Instructions</a></li>
+					<div class="divider">
+					</div>
+					<li><a class="small-link waves-effect" href="help.html"><i class="material-icons">help</i>Help</a></li>
+					<li><a href="http://www.turtlerescueleague.com/about" target="blank" class="small-link waves-effect"><i class="material-icons">launch</i>About</a></li>
+					<div class="divider">
+					</div>
+				</ul>
+			</div>
+			<div class="nav-content">
+				<ul id="tabs" class="tabs tabs-transparent">
+					<li class="tab"><a class="active" href="#tab1">Reports</a></li>
+					<li class="tab"><a href="#tab2">Rescuing</a></li>
+					<li class="tab"><a href="#tab3">Rescued <span id="counter" class="new badge yellow darken-1 green-text" data-badge-caption="">0</span></a></li>
+				</ul>
+			</div>
 		</div>
 	</nav>
 
 	<!-- MAIN SECTOIN -->
 	<main class="row">
+		<div class="container">
 
-		<!-- TAB1: REPORTS -->
-		<div id="tab1">
-			<h5 id="tab1-heading" class="grey-text no-card show center-align">No New Reports</h5>
+			<!-- TAB1: REPORTS -->
+			<div id="tab1">
+				<h5 id="tab1-heading" class="grey-text no-card show center-align">No New Reports</h5>
 
-			<div id="turtleReports"></div>
+				<div id="turtleReports"></div>
 
-			<!--TURTLE CARD-->
-			<div id="fullCard" class="col s12 m6">
-				<div id="turtle" class="card hoverable hide">
-					<div class="card-image">
-						<div id="map" class="col s12"></div>
-					</div>
-					<div class="card-content">
-						<span id="number" class="card-title activator green-text"><i class="material-icons right">more_vert</i></span>
-						<p id="reported"></p>
-					</div>
-					<div class="card sticky-action">
-						<div class="card-action right-align">
-							<button id="next-stage-btn" class="card-button green btn-flat yellow-text waves-effect waves-light" type="button" name="button">Done</button>
+				<!--TURTLE CARD-->
+				<div id="fullCard" class="col s12 m6">
+					<div id="turtle" class="card hoverable hide">
+						<div class="card-image">
+							<div id="map" class="col s12"></div>
+						</div>
+						<div class="card-content">
+							<span id="number" class="card-title activator green-text"><i class="material-icons right">more_vert</i></span>
+							<p id="reported"></p>
+						</div>
+						<div class="card sticky-action">
+							<div class="card-action right-align">
+								<button id="next-stage-btn" class="card-button green btn-flat yellow-text waves-effect waves-light" type="button" name="button">Done</button>
+							</div>
+						</div>
+						<div class="card-reveal">
+							<span class="card-title green-text">Comment<i class="material-icons right">close</i></span>
+							<p id="comment"></p>
 						</div>
 					</div>
-					<div class="card-reveal">
-						<span class="card-title green-text">Comment<i class="material-icons right">close</i></span>
-						<p id="comment"></p>
-					</div>
 				</div>
+
 			</div>
 
-		</div>
+			<!-- TAB2: RESCUING -->
+			<div id="tab2">
+				<h5 id="tab2-heading" class="grey-text no-card center-align">No Rescues in Progress</h5>
+			</div>
 
-		<!-- TAB2: RESCUING -->
-		<div id="tab2">
-			<h5 id="tab2-heading" class="grey-text no-card center-align">No Rescues in Progress</h5>
-		</div>
+			<!-- TAB3: RESCUED -->
+			<div id="tab3">
+				<h5 id="tab3-heading" class="grey-text no-card center-align">No Turtles Rescued</h5>
+			</div>
 
-		<!-- TAB3: RESCUED -->
-		<div id="tab3">
-			<h5 id="tab3-heading" class="grey-text no-card center-align">No Turtles Rescued</h5>
+			<!-- FLOATING ACTION BUTTON -->
+			<div id="report-button" class="fixed-action-btn hover-to-toggle">
+				<a id="button-link" class="btn-floating waves-effect waves-light pulse btn-large yellow darken-2 modal-trigger btn tooltipped" data-position="left" data-delay="50" data-tooltip="Report New Turtle" href="#modal"><i class="material-icons">add</i></a>
+			</div>
 		</div>
-
-		<!-- FLOATING ACTION BUTTON -->
-		<div id="report-button" class="fixed-action-btn hover-to-toggle">
-			<a id="button-link" class="btn-floating waves-effect waves-light pulse btn-large yellow darken-2 modal-trigger btn tooltipped" data-position="left" data-delay="50" data-tooltip="Report New Turtle" href="#modal"><i class="material-icons">add</i></a>
-		</div>
-
 	</main>
 
 	<div id="modals">
