@@ -39,9 +39,9 @@
 		</div>
 		<div class="nav-content">
 			<ul id="tabs" class="tabs tabs-transparent">
-				<li class="tab"><a class="active" href="#tab1">Reported</a></li>
-				<li class="tab"><a href="#tab2">In Progress</a></li>
-				<li class="tab"><a href="#tab3">Saved <span id="counter" class="new badge yellow darken-1 green-text" data-badge-caption="">0</span></a></li>
+				<li class="tab"><a class="active" href="#tab1">Reports</a></li>
+				<li class="tab"><a href="#tab2">Rescuing</a></li>
+				<li class="tab"><a href="#tab3">Rescued <span id="counter" class="new badge yellow darken-1 green-text" data-badge-caption="">0</span></a></li>
 			</ul>
 		</div>
 	</nav>
@@ -49,9 +49,9 @@
 	<!-- MAIN SECTOIN -->
 	<main class="row">
 
-		<!-- TAB1: REPORTED -->
+		<!-- TAB1: REPORTS -->
 		<div id="tab1">
-			<h5 id="tab1-heading" class="grey-text no-card show center-align">No Turtles Reported</h5>
+			<h5 id="tab1-heading" class="grey-text no-card show center-align">No New Reports</h5>
 
 			<div id="turtleReports"></div>
 
@@ -79,31 +79,27 @@
 
 		</div>
 
-		<!-- TAB2: IN PROGRESS -->
+		<!-- TAB2: RESCUING -->
 		<div id="tab2">
 			<h5 id="tab2-heading" class="grey-text no-card center-align">No Rescues in Progress</h5>
 		</div>
 
-		<!-- TAB3: SAVED -->
+		<!-- TAB3: RESCUED -->
 		<div id="tab3">
-			<h5 id="tab3-heading" class="grey-text no-card center-align">No Turtles Saved</h5>
+			<h5 id="tab3-heading" class="grey-text no-card center-align">No Turtles Rescued</h5>
 		</div>
 
 		<!-- FLOATING ACTION BUTTON -->
 		<div id="report-button" class="fixed-action-btn hover-to-toggle">
-			<a id="button-link" class="btn-floating waves-effect waves-light pulse btn-large yellow darken-2 modal-trigger btn tooltipped" data-position="left" data-delay="50" data-tooltip="Send location" href="#location-modal"><i class="material-icons">add</i></a>
-			<ul>
-				<li><a class="btn-floating green waves-effect waves-light modal-trigger btn tooltipped" data-position="left" data-delay="50" data-tooltip="Send location with comments" href="#message-modal"><i class="material-icons">chat</i></a></li>
-				<li><a class="btn-floating blue waves-effect waves-light modal-trigger btn tooltipped" data-position="left" data-delay="50" data-tooltip="Call Rescue Center" href="#phone-modal"><i class="material-icons">phone</i></a></li>
-			</ul>
+			<a id="button-link" class="btn-floating waves-effect waves-light pulse btn-large yellow darken-2 modal-trigger btn tooltipped" data-position="left" data-delay="50" data-tooltip="Report New Turtle" href="#modal"><i class="material-icons">add</i></a>
 		</div>
 
 	</main>
 
 	<div id="modals">
 
-		<!--  MESSAGE REPORT MODAL -->
-		<div id="message-modal" class="modal modal-fixed-footer bottom-sheet">
+		<!-- MODAL -->
+		<div id="modal" class="modal modal-fixed-footer bottom-sheet">
 			<div class="modal-content">
 				<h5 class="center-align">Report New Turtle</h5>
 
@@ -129,11 +125,6 @@
 									<input id="phoneNumber-input" name="phone" type="tel" class="validate">
 									<label for="callBackNumber">Phone Number</label>
 								</div>
-								<!-- Email Input-->
-								<div class="input-field col s12 m4">
-									<input id="email-input" name="email" type="email" class="validate">
-									<label for="email">Email</label>
-								</div>
 
 							</div>
 
@@ -142,7 +133,7 @@
 								<!-- Comment Input -->
 								<input id="comment-input" name="comment" type="text" class="validate" maxlength="150" placeholder="Please note nearby landmarks.">
 								<label for="comment">Comment</label>
-								<p>Your coordinates will also be sent to the Rescue Center. Pleasue ensure you are near the turtle.</p>
+								<p>Your coordinates will be sent to the Rescue Center. Pleasue ensure you are near the turtle.</p>
 
 							</div>
 
@@ -154,22 +145,9 @@
 
 			<div class="modal-footer">
 				<a href="#!" class="modal-action waves-effect waves-black btn-flat modal-close">Cancel</a>
-				<button id="submit" class="btn green yellow-text waves-effect waves-light" type="submit" name="action">Submit</button>
+				<button id="send" class="btn green yellow-text waves-effect waves-light" type="submit" name="action">Send</button>
 			</div>
 
-		</div>
-
-		<!--  PHONE REPORT MODAL -->
-		<div id="phone-modal" class="modal bottom-sheet">
-			<div class="modal-content">
-				<h5>Report New Turtle</h5>
-				<p>Would you like to call the Rescue Center?</p>
-			</div>
-
-			<div class="modal-footer">
-				<a href="#!" class="modal-action waves-effect waves-black btn-flat modal-close">Cancel</a>
-				<a href="tel:+16032255191"><button id="call" class="btn green yellow-text waves-effect waves-light modal-close">CALL</button></a>
-			</div>
 		</div>
 
 		<!--  LOCATION REPORT MODAL -->

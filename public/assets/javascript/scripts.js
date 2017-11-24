@@ -92,7 +92,6 @@ function initMap(id) {
       var comment = $("#comment-input").val(),
         name = $("#name-input").val(),
         phone = $("#phoneNumber-input").val(),
-        email = $("#email-input").val(),
         turtleCard = database.ref('turtleCard'),
         time = moment().format('MMMM Do YYYY, h:mm a'),
         locationLat = position.coords.latitude,
@@ -102,7 +101,6 @@ function initMap(id) {
           Long: locationLong,
           name: name,
           phone: phone,
-          email: email,
           comment: comment,
           time: time,
           status: "reported"
@@ -169,20 +167,11 @@ firebase.database().ref().on("value", function(snapshot) {
   turtles = snapshot.val();
 });
 
-//Send location
+//Send locatoin
 $("#send").on("click", function(event) {
   event.preventDefault();
-  // turtleDiv(false);
-  initMap();
-  Materialize.toast("Your location has been sent.", 2000);
-});
-
-//Submit form and send location
-$("#submit").on("click", function(event) {
-  event.preventDefault();
   validate();
-  validateEmail();
-  $('#message-modal').modal('close');
+  $('#modal').modal('close');
   // turtleDiv(true);
   initMap();
   Materialize.toast("Your report has been sent.", 2000);
@@ -202,25 +191,6 @@ function validate() {
     return false;
   }
 
-  if ($("#email-input").val() == "") {
-    Materialize.toast("Please provide a valid email.", 2000);
-    $.thisBreaksTheForm.database;
-    return false;
-  }
-
-  return (true);
-};
-
-function validateEmail() {
-  var emailID = $("#email-input").val();
-  atpos = emailID.indexOf("@");
-  dotpos = emailID.lastIndexOf(".");
-
-  if (atpos < 1 || (dotpos - atpos < 2)) {
-    Materialize.toast("Please provide a valid email.", 2000);
-    $.thisBreaksTheForm.database;
-    return false;
-  }
   return (true);
 };
 
@@ -229,7 +199,6 @@ function resetForm() {
   $("#comment-input").val("");
   $("#name-input").val("");
   $("#phoneNumber-input").val("");
-  $("#email-input").val("");
 }
 
 //Create turtle card in document
@@ -251,11 +220,11 @@ function turtleDiv(noComm) {
   }
 }
 
-//Move turtle card from Reported to In Progress
+//Move turtle card from Reports to Rescuing
 $("#tab1").on("click", "#next-stage-btn", function() {
   $("#tab2-heading").attr('class', 'no-card hide');
   $("#fullCard").prependTo("#tab2");
-  Materialize.toast("This rescue has been marked IN PROGRESS.", 2000);
+  Materialize.toast("This turtle is now being rescued.", 2000);
 });
 
 //Move turtle card from In Progress to Saved
@@ -266,14 +235,13 @@ $("#tab2").on("click", "#next-stage-btn", function() {
   $("#tab3-heading").attr('class', 'no-card hide');
   $(this).parents("#fullCard").prependTo("#tab3");
   $("#tab3").find(".sticky-action").html("");
-  Materialize.toast("This turtle has been marked SAVED.", 2000);
+  Materialize.toast("This turtle has been rescued.", 2000);
 });
 
 //Formspree ajax
-$("#submit").on("click", function(e) {
+$("#send").on("click", function(e) {
   e.preventDefault();
   var name = $("#name-input");
-  var email = $("#email-input");
   var phone = $("#phoneNumber-input");
   var landmarks = $("#comment-input");
   $.ajax({
@@ -318,7 +286,6 @@ $(document).ready(function() {
   //Formspree ajax
   $('#reportNewTurtle-form').submit(function(e) {
     var name = $('#name-input');
-    var email = $('#email-input');
     var phone = $('#phoneNumber-input');
     var landmarks = $('#comment-input');
     $.ajax({
