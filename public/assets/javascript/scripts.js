@@ -258,7 +258,7 @@ $(document).ready(function() {
   //Parallax page
   $('.parallax').parallax();
 
-  //Sidebar menu
+  //Mobile sidebar menu
   $(".button-collapse").sideNav({
     menuWidth: 250,
     closeOnClick: true,
