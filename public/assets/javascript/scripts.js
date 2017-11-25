@@ -55,69 +55,6 @@ function notInitMap() {
 var map, infoWindow;
 var marker;
 
-function initMap(id) {
-
-  map = new google.maps.Map(document.getElementById('map'), {
-    disableDefaultUI: true,
-    zoomControl: false,
-    streetViewControl: false,
-    scaleControl: false
-
-  });
-
-  //Use HTML5 geolocation
-  if (navigator && navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      };
-      var turtleStatus = "reported";
-      marker = new google.maps.Marker({
-        postion: pos,
-        map: map,
-        disableDefaultUI: true,
-        animation: google.maps.Animation.DROP
-      });
-      marker.setPosition(pos);
-      map.setCenter(pos);
-      map.setZoom(18);
-      map.setOptions({
-        draggable: false
-      });
-
-      // REWORKED THIS CALL Getting location and creating JSON on Firebase
-      var database = firebase.database();
-
-      var comment = $("#comment-input").val(),
-        name = $("#name-input").val(),
-        phone = $("#phoneNumber-input").val(),
-        turtleCard = database.ref('turtleCard'),
-        time = moment().format('MMMM Do YYYY, h:mm a'),
-        locationLat = position.coords.latitude,
-        locationLong = position.coords.longitude,
-        data = {
-          Lat: locationLat,
-          Long: locationLong,
-          name: name,
-          phone: phone,
-          comment: comment,
-          time: time,
-          status: "reported"
-        };
-
-        database.ref().push(data);
-        resetForm();
-      },
-      function() {
-        handleLocationError(true, infoWindow, map.getCenter());
-      })
-  } else {
-    //If browser doesn't suppport geolocation
-    handleLocationError(false, infoWindow, map.getCenter());
-  }
-}
-
 // Geolocation errors
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
@@ -167,15 +104,6 @@ firebase.database().ref().on("value", function(snapshot) {
   turtles = snapshot.val();
 });
 
-//Send locatoin
-$("#send").on("click", function(event) {
-  event.preventDefault();
-  validate();
-  $('#modal').modal('close');
-  initMap();
-  Materialize.toast("Your report has been sent.", 2000);
-});
-
 //Validate form
 function validate() {
   if ($("#name-input").val() == "") {
@@ -198,6 +126,78 @@ function resetForm() {
   $("#comment-input").val("");
   $("#name-input").val("");
   $("#phoneNumber-input").val("");
+}
+
+//Send locatoin
+$("#send").on("click", function(event) {
+  event.preventDefault();
+  validate();
+  $('#modal').modal('close');
+  saveLocation();
+  Materialize.toast("Your report has been sent.", 2000);
+});
+
+function saveLocation(id) {
+  
+  map = new google.maps.Map(document.getElementById('map'), {
+    disableDefaultUI: true,
+    zoomControl: false,
+    streetViewControl: false,
+    scaleControl: false
+
+  });
+
+  //Use HTML5 geolocation
+  if (navigator && navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      var turtleStatus = "reported";
+      marker = new google.maps.Marker({
+        postion: pos,
+        map: map,
+        disableDefaultUI: true,
+        animation: google.maps.Animation.DROP
+      });
+      marker.setPosition(pos);
+      map.setCenter(pos);
+      map.setZoom(18);
+      map.setOptions({
+        draggable: false
+      });
+
+      // Save location to Firebase
+      var database = firebase.database();
+
+      var comment = $("#comment-input").val(),
+        name = $("#name-input").val(),
+        phone = $("#phoneNumber-input").val(),
+        turtleCard = database.ref('turtleCard'),
+        time = moment().format('MMMM Do YYYY, h:mm a'),
+        locationLat = position.coords.latitude,
+        locationLong = position.coords.longitude,
+        data = {
+          Lat: locationLat,
+          Long: locationLong,
+          name: name,
+          phone: phone,
+          comment: comment,
+          time: time,
+          status: "reported"
+        };
+
+        database.ref().push(data);
+        resetForm();
+      },
+      function() {
+        handleLocationError(true, infoWindow, map.getCenter());
+      })
+  } else {
+    //If browser doesn't suppport geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
+  }
 }
 
 //Create turtle card in document
